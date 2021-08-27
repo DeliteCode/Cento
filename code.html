@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>App Name: A coding Project - DL Code</title>
+    <title>Cento: A coding Project - DL Code</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,7 +24,11 @@
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="img/Logo.png" class="d-inline-block align-text-top" width="30" height="24"> Cento</a>
+            <a class="navbar-brand logoFont" href="#">
+                <img src="img/Logo.png" 
+                class="d-inline-block align-text-top" 
+                width="30" height="24"> Cento
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -58,16 +62,118 @@
                 <div class="col-lg-8 gy-2">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            function helloWorld() {
-                                alert("Hello World!");                            
+                            //get the values from interface
+                            function getValues() {
+                                //get values from page
+                                let startValue = document.getElementById("startValue").value;
+                                let endValue = document.getElementById("endValue").value;
+                            
+                                //parse into integers
+                                startValue = parseInt(startValue);
+                                endValue = parseInt(endValue);
+                                //alert("The start value: " + startValue);
+                                
+                                if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+                                    let numbers = generateNumbers(startValue, endValue);
+                                    //call display numbers
+                                    displayNumbers(numbers);       
+                            
+                                } else {
+                                    alert("You must enter a valid number");
+                                }
+                              
+                                
+                            
+                            }
+                            
+                            //generate numbers to start value to end value
+                            function generateNumbers(startValue, endValue) {
+                                let numbers = [];
+                            
+                                for (let index = startValue; index <= endValue; index++) {
+                                   numbers.push(index);
+                                }
+                            
+                                return numbers;
+                            }
+                            
+                            //Display the numbers and mark even number in bold
+                            function displayNumbers(numbers) {
+                                let templateRows = ""
+                                for (let index = 0; index < numbers.length; index++) {
+                                    let number = numbers[index];
+                                    let className = "even";
+                            
+                                    if (number % 2 == 0) {
+                                        className == "even";
+                                    } else {
+                                        className = "odd";
+                                    }
+                                    //this render correctly with prism 
+
+                                    templateRows += `<tr><td class="${className}">${number}</td></tr>`; 
+                            
+                                }
+                                document.getElementById("results").innerHTML = templateRows;
                             }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structed in one function</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                    <p>The Code is structed in three functions</p>
+                    <h5>Function getValues</h5>
+                    <p>
+                        The function <span class="font-featured">getValues()</span> 
+                        will assign to 2 variables, 
+                        <span class="font-featured">startValue</span> and 
+                        <span class="font-featured">endValue</span>, the values captured 
+                        from the html inputs with ids, 
+                        <span class="font-featured">startValue</span> and 
+                        <span class="font-featured">endValue</span>, 
+                        respectively, converting these values into integers using the 
+                        function <span class="font-featured">parseInt()</span>. 
+                        If the content of these 2 variables really was converted to 
+                        integers, the code will then call the defined 
+                        functions <span class="font-featured">generateNumbers()</span> 
+                        and <span class="font-featured">displayNumbers()</span>. 
+                        The return of the function "generateNumbers", which is an array, 
+                        will be assigned to a variable called 
+                        <span class="font-featured">numbers</span>, which will 
+                        then be passed as argument to the function 
+                        <span class="font-featured">displayNumbers()</span> to 
+                        be displayed. Otherwise, it will emit an alert, asking the user 
+                        to enter a valid number.
+                    </p>
+                    <br>
+                    <h5>Function generateNumbers</h5>
+                    <p>
+                        The function <span class="font-featured">generateNumbers()</span>
+                        will declare an arrray called 
+                        <span class="font-featured">numbers</span>, 
+                        initializing it trough an iteration process, each of 
+                        its positions. This function contains 2 parameters, 
+                        <span class="font-featured">startValue</span> and 
+                        <span class="font-featured">endValue</span>, which will 
+                        determine where the 
+                        iteration process will start, and where it will end. 
+                        After the iteration process is complete, the function will 
+                        return the array of numbers back to the caller.
+                    </p>
+                    <br>
+                    <h5>Function displayNumbers</h5>
+                    <p>
+                        The function <span class="font-featured">displayNumbers()</span> 
+                        will process an array of numbers using a for loop. 
+                        Each item of this array will be assigned to a variable called 
+                        <span class="font-featured">number</span>, at each iteration, 
+                        analyzing if the value of this item is an even or odd number.
+                        The  <span class="font-featured">templateRows</span> variable 
+                        will be initialized at each iteration 
+                        with an html instruction, which contains javascript 
+                        elements informing the value of each position of the array 
+                        of numbers, and if each of its values are even or odd, 
+                        rendering this information at the html document. 
+                    </p>
                 </div>
             </div>
         </div> 
@@ -86,10 +192,10 @@
                 </div>
                 <div class="col d-flex align-itens-center justify-content-center justify-content-lg-end">
                     <div class="row">
-                        <div class="col social"><a href="#" target="_https://www.linkedin.com/in/delite-code-0b58ab208/"><i class="fab fa-linkedin fa-2x"></i></a></div>
-                        <div class="col social"><a href="#"><i class="fab fa-github fa-2x"></i></a></div>
-                        <div class="col social"><a href="#"><i class="fab fa-facebook fa-2x"></i></a></div>
-                        <div class="col social"><a href="#"><i class="fab fa-youtube fa-2x"></i></a></div>
+                        <div class="col social"><a target="_blank" href="https://www.linkedin.com/in/delite-code-0b58ab208/" target="_https://www.linkedin.com/in/delite-code-0b58ab208/"><i class="fab fa-linkedin fa-2x"></i></a></div>
+                        <div class="col social"><a target="_blank" href="https://github.com/DeliteCode/"><i class="fab fa-github fa-2x"></i></a></div>
+                        <div class="col social"><a target="_blank" href="https://www.facebook.com/debug.lite"><i class="fab fa-facebook fa-2x"></i></a></div>
+                        <div class="col social"><a target="_blank" href="https://www.youtube.com/channel/UC-yMQq40hhW3jRYphzo2zgw"><i class="fab fa-youtube fa-2x"></i></a></div>
                         <div class="col social"><a href="#"><i class="fab fa-twitter fa-2x"></i></a></div>
                     </div>
                 </div>

@@ -59,3 +59,23 @@ pre[class*="language-"] {
 main > .container {
   padding: 60px 15px 0;
 }
+
+.logoFont {
+  font-family: "Racing Sans One", cursive;
+  font-weight: 600;
+  font-style: italic;
+}
+.odd {
+  font-weight: 100;
+}
+.even {
+  font-weight: bold;
+  font-size: large;
+}
+.font-featured {
+  color: rgb(18, 96, 241);
+  font-weight: bold;
+}
+p {
+  text-align: left;
+}
